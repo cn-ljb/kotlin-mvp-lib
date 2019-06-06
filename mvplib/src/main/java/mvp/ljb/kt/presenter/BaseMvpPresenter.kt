@@ -35,7 +35,8 @@ abstract class BaseMvpPresenter<out V : IViewContract> : IBasePresenter<V>, IPre
     override fun onStop() {
     }
 
-    override fun onDestroy() {
+    override fun onDestroy() {	
+	mMVPView =null
     }
 
 }
