@@ -50,6 +50,9 @@ abstract class MvpFragment<out P : IPresenterContract> : Fragment(), IBaseView<P
 
     override fun onDestroy() {
         super.onDestroy()
-        mPresenter?.onDestroy()
+        if (mPresenter != null) {
+            mPresenter!!.onDestroy()
+            mPresenter = null
+        }
     }
 }

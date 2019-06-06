@@ -51,6 +51,9 @@ abstract class MvpAppCompatActivity<out P : IPresenterContract> : AppCompatActiv
 
     override fun onDestroy() {
         super.onDestroy()
-        mPresenter?.onDestroy()
+        if (mPresenter != null) {
+            mPresenter!!.onDestroy()
+            mPresenter = null
+        }
     }
 }
