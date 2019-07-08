@@ -11,7 +11,7 @@ import mvp.ljb.kt.view.MvpFragment
 
 /**
  * Author:Ljb
- * Time:2018/12/28
+ * Time:2019/7/4
  * There is a lot of misery in life
  **/
 abstract class BaseMvpFragment<out P : IPresenterContract> : MvpFragment<P>() {
@@ -36,20 +36,23 @@ abstract class BaseMvpFragment<out P : IPresenterContract> : MvpFragment<P>() {
         initData()
     }
 
-    protected open fun init(savedInstanceState: Bundle?) {}
     protected abstract fun getLayoutId(): Int
+
+    protected open fun init(savedInstanceState: Bundle?) {}
+
     protected open fun initView() {}
+
     protected open fun initData() {}
 
-    protected fun showToast(resId: Int) {
+    override fun showToast(resId: Int) {
         Toast.makeText(activity, resId, Toast.LENGTH_SHORT).show()
     }
 
-    protected fun showToast(str: String) {
-        Toast.makeText(activity, str, Toast.LENGTH_SHORT).show()
+    override fun showToast(text: String?) {
+        Toast.makeText(activity, text, Toast.LENGTH_SHORT).show()
     }
 
-    protected fun goActivity(cls: Class<*>, bundle: Bundle?) {
+    protected open fun goActivity(cls: Class<*>, bundle: Bundle?) {
         val intent = Intent(activity, cls)
         if (bundle != null) {
             intent.putExtras(bundle)
@@ -57,7 +60,7 @@ abstract class BaseMvpFragment<out P : IPresenterContract> : MvpFragment<P>() {
         startActivity(intent)
     }
 
-    protected fun goActivity(cls: Class<*>) {
+    protected open fun goActivity(cls: Class<*>) {
         goActivity(cls, null)
     }
 

@@ -10,11 +10,10 @@ import mvp.ljb.kt.view.MvpFragmentActivity
 
 /**
  * Author:Ljb
- * Time:2019/1/10
+ * Time:2019/7/4
  * There is a lot of misery in life
  **/
 abstract class BaseMvpAppCompatActivity<out P : IPresenterContract> : MvpFragmentActivity<P>() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +39,15 @@ abstract class BaseMvpAppCompatActivity<out P : IPresenterContract> : MvpFragmen
         return res
     }
 
-    protected fun showToast(resId: Int) {
+    override fun showToast(resId: Int) {
         Toast.makeText(this, resId, Toast.LENGTH_SHORT).show()
     }
 
-    protected fun showToast(str: String?) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+    override fun showToast(text: String?) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
-    protected fun goActivity(cls: Class<*>, bundle: Bundle?) {
+    protected open fun goActivity(cls: Class<*>, bundle: Bundle?) {
         val intent = Intent(this, cls)
         if (bundle != null) {
             intent.putExtras(bundle)
@@ -56,7 +55,7 @@ abstract class BaseMvpAppCompatActivity<out P : IPresenterContract> : MvpFragmen
         startActivity(intent)
     }
 
-    protected fun goActivity(cls: Class<*>) {
+    protected open fun goActivity(cls: Class<*>) {
         goActivity(cls, null)
     }
 }

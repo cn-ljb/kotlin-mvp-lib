@@ -6,20 +6,19 @@ import mvp.ljb.kt.contract.IPresenterContract
 import mvp.ljb.kt.contract.IViewContract
 
 /**
- * Created by L on 2017/7/10.
- */
+ * Author:Ljb
+ * Time:2019/7/4
+ * There is a lot of misery in life
+ **/
 abstract class MvpFragment<out P : IPresenterContract> : Fragment(), IBaseView<P>, IViewContract {
-
 
     private var mPresenter: P? = null
 
     protected fun getPresenter() = mPresenter!!
 
     private fun initPresenter() {
-        val clazz = registerPresenter()
-        val constructor = clazz.getConstructor()
-        mPresenter = constructor.newInstance()
-        mPresenter!!.registerMvpView(this)
+        mPresenter = registerPresenter().newInstance()
+        mPresenter?.register(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

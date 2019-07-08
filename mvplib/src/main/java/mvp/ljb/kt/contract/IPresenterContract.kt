@@ -1,10 +1,13 @@
 package mvp.ljb.kt.contract
 
 /**
- * 公共Presenter层契约接口
- * Created by L on 2017/7/10.
- * */
+ * Presenter公共契约接口
+ * Author:Ljb
+ * Time:2019/7/4
+ * There is a lot of misery in life
+ **/
 interface IPresenterContract {
+
     fun onCreate()
 
     fun onStart()
@@ -17,5 +20,6 @@ interface IPresenterContract {
 
     fun onDestroy()
 
-    fun registerMvpView(mvpView: IViewContract)
+    fun register(mvpView: IViewContract)
+
 }

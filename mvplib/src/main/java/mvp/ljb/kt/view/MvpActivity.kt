@@ -5,19 +5,20 @@ import android.os.Bundle
 import mvp.ljb.kt.contract.IPresenterContract
 import mvp.ljb.kt.contract.IViewContract
 
-
+/**
+ * Author:Ljb
+ * Time:2019/7/4
+ * There is a lot of misery in life
+ **/
 abstract class MvpActivity<out P : IPresenterContract> : Activity(), IBaseView<P>, IViewContract {
-
 
     private var mPresenter: P? = null
 
     protected fun getPresenter() = mPresenter!!
 
     private fun initPresenter() {
-        val clazz = registerPresenter()
-        val constructor = clazz.getConstructor()
-        mPresenter = constructor.newInstance()
-        mPresenter?.registerMvpView(this)
+        mPresenter = registerPresenter().newInstance()
+        mPresenter?.register(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
