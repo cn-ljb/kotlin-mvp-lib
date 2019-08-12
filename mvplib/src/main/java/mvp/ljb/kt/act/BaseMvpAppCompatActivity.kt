@@ -6,14 +6,14 @@ import android.content.res.Resources
 import android.os.Bundle
 import android.widget.Toast
 import mvp.ljb.kt.contract.IPresenterContract
-import mvp.ljb.kt.view.MvpFragmentActivity
+import mvp.ljb.kt.view.MvpAppCompatActivity
 
 /**
  * Author:Ljb
  * Time:2019/7/4
  * There is a lot of misery in life
  **/
-abstract class BaseMvpAppCompatActivity<out P : IPresenterContract> : MvpFragmentActivity<P>() {
+abstract class BaseMvpAppCompatActivity<out P : IPresenterContract> : MvpAppCompatActivity<P>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

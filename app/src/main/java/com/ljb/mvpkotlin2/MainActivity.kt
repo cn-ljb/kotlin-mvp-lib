@@ -1,4 +1,4 @@
-package com.senyint.mvpkotlin2
+package com.ljb.mvpkotlin2
 
 import android.app.Activity
 import android.os.Bundle
